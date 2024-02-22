@@ -1,0 +1,6 @@
+{
+  # TODO: set to the disk uuid of your encrypted partition
+  disk_uuid = "some-long-uuid-string-indeed"
+  # network interface, find it with `ip a`
+  interface = "wlp0s20f3";
+}
