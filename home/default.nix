@@ -18,8 +18,8 @@
     # the home Manager release notes for a list of state version
     # changes in each release.
     stateVersion = "23.11";
-    # Packages that should be installed to the user profile.
 
+    # Packages that should be installed to the user profile.
     packages = with pkgs; [
       # file browser
       xfce.thunar
@@ -28,55 +28,47 @@
       # chat
       telegram-desktop
 
+      # This is how we get some fonts
       (pkgs.nerdfonts.override { fonts = ["FiraMono" "DroidSansMono" "Hasklig" ]; })
-      # here is some command line tools I use frequently
-      # feel free to add your own or remove some of them
+      # here are some handy command line tools
 
-      # neofetch
-      # nnn # terminal file manager
+      # archives
+      zip
+      xz
+      unzip
+      p7zip
 
-      # # archives
-      # zip
-      # xz
-      # unzip
-      # p7zip
-
-      # # utils
-      # ripgrep # recursively searches directories for a regex pattern
+      # utils
       jq # A lightweight and flexible command-line JSON processor
+      fzf # A command-line fuzzy finder
+      bat # a `cat` clone with syntax highlighting + git integration
+      # ripgrep # recursively searches directories for a regex pattern
       # yq-go # yaml processer https://github.com/mikefarah/yq
       # eza # A modern replacement for ‘ls’
-      # fzf # A command-line fuzzy finder
 
-      # # networking tools
+      # networking tools
+      nmap # A utility for network discovery and security auditing
       # mtr # A network diagnostic tool
       # iperf3
       # dnsutils  # `dig` + `nslookup`
       # ldns # replacement of `dig`, it provide the command `drill`
       # aria2 # A lightweight multi-protocol & multi-source command-line download utility
       # socat # replacement of openbsd-netcat
-      nmap # A utility for network discovery and security auditing
       # ipcalc  # it is a calculator for the IPv4/v6 addresses
 
-      # # misc
+      # misc
+      which
+      gnupg
       # cowsay
       # file
-      which
       # tree
       # gnused
       # gnutar
       # gawk
       # zstd
-      gnupg
 
-      # # nix related
-      # #
-      # # it provides the command `nom` works just like `nix`
-      # # with more details log output
-      # nix-output-monitor
-
-      # # productivity
-      # glow # markdown previewer in terminal
+      # productivity
+      glow # markdown previewer in terminal
 
       btop  # replacement of htop/nmon
       iotop # io monitoring
@@ -95,16 +87,6 @@
       usbutils # lsusb
     ];
   };
-
-  # link the configuration file in current directory to the specified location in home directory
-  # home.file.".config/i3/wallpaper.jpg".source = ./wallpaper.jpg;
-
-  # link all files in `./scripts` to `~/.config/i3/scripts`
-  # home.file.".config/i3/scripts" = {
-  #   source = ./scripts;
-  #   recursive = true;   # link recursively
-  #   executable = true;  # make all files executable
-  # };
 
   # encode the file content in nix configuration file directly
   # home.file.".xxx".text = ''
@@ -146,7 +128,9 @@
   #   };
   # };
   # Let home Manager install and manage itself.
+
   programs.home-manager.enable = true;
 
+  # Enable the usage of hyprland
   wayland.windowManager.hyprland.enable = true;
 }
