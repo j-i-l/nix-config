@@ -2,3 +2,7 @@ userInfo.nix
 deviceInfo.nix
 
 result
+
+# vim stuff
+*.swp
+*.swo
