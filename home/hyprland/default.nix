@@ -1,6 +1,9 @@
-{config, ...}: let 
+{pkgs, config, ...}: let 
     colors = import ./mocha.nix; 
 in {
+  home.packages = with pkgs; [
+    wofi
+  ];
   wayland.windowManager.hyprland = {
     settings = {
         # --Keybindings--
@@ -27,7 +30,7 @@ in {
         bind =
           [
             # --Hyprland--
-            "$mod, Q, killactive,"
+            "$mod SHIFT, Q, killactive,"
             "$mod, F, fullscreen,"
 	    "$mod, P, pseudo,"
 
@@ -48,6 +51,8 @@ in {
             # --Mappings--
             "$mod, B, exec, $browser"
             "$mod, Return, exec, $term"
+            # "$mod SHIFT, Return, exec, wofi --show run --xoffset=1670 --yoffset=12 --width=230px --height=984 --style=$HOME/.config/wofi.css --term=footclient --prompt=Run"
+            "$mod SHIFT, Return, exec, wofi --show run --style=$HOME/.config/wofi.css --term=footclient --prompt=Run --normal-window"
             ", Print, exec, grimblast copy area"
           ]
           ++ (

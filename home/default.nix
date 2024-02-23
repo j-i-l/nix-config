@@ -4,6 +4,7 @@
   imports = [
     ./shell
     ./hyprland
+    ./wofi
   ];
   home = {
     username = "${userInfo.username}";

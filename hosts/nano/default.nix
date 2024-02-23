@@ -12,20 +12,17 @@
   # allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-
   networking = {
     hostName = "nano";
     networkmanager.enable = true;  # Easiest to use and most distros use this by default.
     useDHCP = lib.mkDefault true;
   };
 
-
   users.users.${userInfo.username} = {
     isNormalUser = true;
     extraGroups = [ "wheel" "audio" ]; # Enable ‘sudo’ for the user.
     hashedPassword = "${userInfo.pwhash}";
   };
-
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
