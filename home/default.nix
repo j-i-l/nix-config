@@ -25,6 +25,8 @@
       xfce.thunar
       # browsers
       firefox-wayland 
+      # for firefox we need the icons from gtk and for this we need dconf
+      pkgs.dconf
       # chat
       telegram-desktop
 
@@ -86,6 +88,15 @@
       pciutils # lspci
       usbutils # lsusb
     ];
+  };
+
+  # fix some icon issues with firefox
+  gtk = {
+    enable = true;
+    theme = {
+      package = pkgs.gnome.gnome-themes-extra;
+      name = "Adwaita-dark";
+    };
   };
 
   # encode the file content in nix configuration file directly
