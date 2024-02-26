@@ -22,7 +22,8 @@
 
     # Packages that should be installed to the user profile.
     packages = with pkgs; [
-      # file browser
+      # filemanager
+      ranger
       xfce.thunar
       # browsers
       firefox-wayland 
