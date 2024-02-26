@@ -1,6 +1,11 @@
 {pkgs, config, ...}: let 
     colors = import ./mocha.nix; 
 in {
+
+  imports = [
+    ./waybar.nix
+  ];
+
   home.packages = with pkgs; [
     wofi
   ];
