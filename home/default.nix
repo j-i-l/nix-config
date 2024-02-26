@@ -3,6 +3,7 @@
 {
   imports = [
     ./shell
+    ./neovim
     ./hyprland
     ./wofi
   ];
