@@ -18,9 +18,12 @@
     useDHCP = lib.mkDefault true;
   };
 
+  # enable virtualisation
+  virtualisation.lxd.enable = true;
+
   users.users.${userInfo.username} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "audio" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "audio" "lxd" ]; # Enable ‘sudo’ for the user.
     hashedPassword = "${userInfo.pwhash}";
   };
 
