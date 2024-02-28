@@ -39,6 +39,8 @@
     gnupg
     git
   ];
+  # using udisksctl to mount devices
+  services.udisks2.enable = true;
   # config to make gpg work
   programs.gnupg.agent = {
     enable = true;
