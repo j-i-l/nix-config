@@ -1,9 +1,8 @@
 { config, pkgs, lib, userInfo, ... }:
-
 {
   imports = [
     ./shell
-    ./neovim
+    ./vim
     ./hyprland
     ./wofi
   ];

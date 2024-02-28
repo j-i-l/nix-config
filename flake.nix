@@ -17,11 +17,16 @@
         url = "github:nix-community/home-manager/release-23.11";
         inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixvim = {
+        url = "github:nix-community/nixvim/nixos-23.11";
+        inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # # note: target a specific tag like this:
     # hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }: 
+  outputs = inputs@{ self, nixpkgs, home-manager, nixvim, ... }: 
   let
     userInfo = import ./userInfo.nix; 
     deviceInfo = import ./deviceInfo.nix; 
@@ -36,12 +41,17 @@
         inherit specialArgs;
         system = "x86_64-linux";
         modules = [
+          # nixvim.nixosModules.nixvim
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = specialArgs;
-            home-manager.users.${userInfo.username} = import ./home;
+            home-manager.users.${userInfo.username}.imports = [
+              ./home
+              inputs.nixvim.homeManagerModules.nixvim
+            ];
+            # home-manager.users.${userInfo.username} = import ./home;
           }
           ./hosts/nano
         ];
