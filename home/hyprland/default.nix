@@ -36,7 +36,8 @@ in {
           [
             # --Hyprland--
             "$mod SHIFT, Q, killactive,"
-            "$mod, F, fullscreen,"
+            "$mod, F, fullscreen, 1"     # keep the bar
+            "$mod SHIFT, F, fullscreen"  # without bar
 	    "$mod, P, pseudo,"
 
             # --Focus--
