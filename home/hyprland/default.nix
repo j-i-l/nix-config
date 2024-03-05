@@ -1,4 +1,4 @@
-{pkgs, config, ...}: let 
+{pkgs, config, deviceInfo, ...}: let 
     colors = import ./mocha.nix; 
 in {
 
@@ -11,6 +11,8 @@ in {
   ];
   wayland.windowManager.hyprland = {
     settings = {
+        # --Monitors--
+        monitor = deviceInfo.monitors;
         # --Keybindings--
         "$mod" = "SUPER";
 

@@ -3,4 +3,5 @@
   disk_uuid = "some-long-uuid-string-indeed"
   # network interface, find it with `ip a`
   interface = "wlp0s20f3";
+  monitor = ["eDP-1, 2160x1350@59, 0x0, 1" ", preferred, auto, 1"];
 }
