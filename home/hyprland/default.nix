@@ -22,7 +22,8 @@ in {
         "$files" = "thunar";
 
         input = {
-          kb_options = "caps:swapescape";
+          kb_layout = "us,de";
+          kb_options = "caps:swapescape,grp:win_space_toggle";
         };
         general = {
           gaps_in = 3;
