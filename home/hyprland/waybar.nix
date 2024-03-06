@@ -52,7 +52,7 @@ in
     systemd.enable = true;
     settings = {
       primary = {
-        mode = "dock";
+        # mode = "dock";
         layer = "top";
         height = 7;
         margin = "0";
@@ -81,12 +81,15 @@ in
 
         clock = {
           interval = 1;
-          format = "{:%d/%m %H:%M:%S}";
-          format-alt = "{:%Y-%m-%d %H:%M:%S %z}";
+           format = "  {:%Y/%m/%d    %H:%M:%S}";
+          format-alt = " {:%a %b %d, %G}";
+          # format = "{:%d/%m %H:%M:%S}";
+          # format-alt = "{:%Y-%m-%d %H:%M:%S %z}";
           on-click-left = "mode";
           tooltip-format = ''
             <big>{:%Y %B}</big>
             <tt><small>{calendar}</small></tt>'';
+          # tooltip-format = "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>";
         };
 
         cpu = {
