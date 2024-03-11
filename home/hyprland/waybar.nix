@@ -74,6 +74,7 @@ in
         ];
 
         modules-right = [
+          "custom/kbLayout"
           "network"
           "tray"
           "custom/hostname"
@@ -154,6 +155,19 @@ in
           };
           on-click-left = "${wofi} -S drun -x 10 -y 10 -W 25% -H 60%";
           on-click-right = "${hyprland}/bin/hyprctl dispatch togglespecialworkspace";
+        };
+        "custom/kbLayout" = 
+        { 
+          interval = 1;
+          return-type = "json";
+          exec = jsonOutput "kbLayout" {
+            pre = ''
+              kbLayout="$(${hyprland}/bin/hyprctl devices -j | ${jq} -r '.keyboards[] | select(.name == "at-translated-set-2-keyboard") | .active_keymap' | ${cut} -c 1-2)"
+            '';
+            text = "  $kbLayout";
+          };
+          # exec = "hyprctl devices -j | jq -r '.keyboards[] | select(.name == \\\"at-translated-set-2-keyboard\\\") | .active_keymap' | cut -c 1-2 | tr 'A-Z' 'a-z'}";
+          tooltip = "Current layout";
         };
         "custom/hostname" = {
           exec = "echo $USER@$HOSTNAME";
@@ -268,6 +282,12 @@ in
       }
       #custom-currentplayer {
         padding-right: 0;
+      }
+      #custom-kbLlayout {
+        padding-right: 1.5em;
+        padding-left: 1em;
+        margin-right: 0;
+        border-radius: 0.5em;
       }
       #tray {
       }
