@@ -19,6 +19,7 @@ in {
         # --Mappings--
         "$term" = "alacritty";
         "$browser" = "firefox";
+        "$browser-private" = "firefox --private-window";
         "$files" = "thunar";
 
         input = {
@@ -58,7 +59,8 @@ in {
 	    "$mod SHIFT, S, movetoworkspace, special"
 
             # --Mappings--
-            "$mod, B, exec, $browser"
+            "$mod, SPACE, exec, $browser"
+            "$mod SHIFT, SPACE, exec, $browser-private"
             "$mod, Return, exec, $term"
             # "$mod SHIFT, Return, exec, wofi --show run --xoffset=1670 --yoffset=12 --width=230px --height=984 --style=$HOME/.config/wofi.css --term=footclient --prompt=Run"
             "$mod SHIFT, Return, exec, wofi --show run --style=$HOME/.config/wofi.css --term=footclient --prompt=Run --normal-window"
