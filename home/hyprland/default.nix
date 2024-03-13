@@ -24,7 +24,7 @@ in {
 
         input = {
           kb_layout = "us,de";
-          kb_options = "caps:swapescape,grp:win_space_toggle";
+          kb_options = "caps:swapescape,grp:alt_space_toggle";
         };
         general = {
           gaps_in = 3;
