@@ -127,6 +127,7 @@
     enable = true;
     userName = "${userInfo.fullname}";
     userEmail = "${userInfo.email}";
+    signing.key = "${userInfo.gpgkey}";
   };
 
   # # starship - an customizable prompt for any shell

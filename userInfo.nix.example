@@ -2,5 +2,6 @@
   username = "john";
   fullname = "John Doe";
   email = "John@Doe.com";
+  gpgkey = "< run `pgp --armor --export <ID>` where <ID> is your name";
   pwhash = "< run `mkpasswd` to get the hash of a password>";
 }
