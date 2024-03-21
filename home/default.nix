@@ -89,6 +89,9 @@
       ethtool
       pciutils # lspci
       usbutils # lsusb
+
+      # enable wl-copy and wl-paste
+      wl-clipboard
     ];
   };
 

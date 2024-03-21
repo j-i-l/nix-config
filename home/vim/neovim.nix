@@ -27,6 +27,7 @@
         set nojoinspaces
         set shiftround
         set number relativenumber
+        set clipboard+=unnamedplus
 
         set nolbr
         set tw=0
