@@ -47,6 +47,13 @@
 
   hardware.opengl.enable = lib.mkDefault true;
 
+  # enable bluetooth
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
+  services.blueman.enable = true;
+
   sound.enable = true;
   hardware.pulseaudio.enable = true;
   services.pipewire.enable = false;
