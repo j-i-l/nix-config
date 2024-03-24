@@ -50,4 +50,22 @@
 
   system.stateVersion = lib.mkDefault "23.11"; # Did you read the comment?
 
+  #----=[ Fonts ]=----#
+  # install some fonts
+  fonts = {
+    enableDefaultPackages = true;
+    packages = with pkgs; [
+      ubuntu_font_family
+      nerdfonts
+    ];
+    fontconfig = {
+      enable = true;
+      defaultFonts = {
+        serif = ["Hasklig" "Ubuntu"];
+        sansSerif = ["FiraMono" "Ubuntu"];
+        monospace = ["Ubuntu"];
+      };
+    };
+  };
+
 }

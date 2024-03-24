@@ -32,8 +32,6 @@
       # chat
       telegram-desktop
 
-      # This is how we get some fonts
-      (pkgs.nerdfonts.override { fonts = ["FiraMono" "DroidSansMono" "Hasklig" ]; })
       # here are some handy command line tools
 
       # archives
@@ -95,6 +93,7 @@
     ];
   };
 
+
   # fix some icon issues with firefox
   gtk = {
     enable = true;
@@ -115,8 +114,6 @@
     "Xft.dpi" = 172;
   };
   
-  # install some fonts
-  fonts.fontconfig.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
