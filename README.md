@@ -11,7 +11,7 @@ Nix code that builds my NixOS-based system(s).
 
 🔴 WARNINGS:
 
-- This is work and learning in progess.
+- This is work and learning in process.
 - Some extra configuration steps are needed for this flake to be deployed (see below).
 
 # How to deploy
