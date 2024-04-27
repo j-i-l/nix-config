@@ -6,6 +6,9 @@
 
   ];
 
+  # for tracking keystrokes:
+  # sudo libinput debug-events --show-keycodes 
+
   # Set your time zone.
   time.timeZone = "Europe/Zurich";
 
@@ -23,7 +26,7 @@
 
   users.users.${userInfo.username} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "audio" "lxd" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "audio" "lxd" "video"]; # Enable ‘sudo’ for the user.
     hashedPassword = "${userInfo.pwhash}";
   };
 
@@ -55,8 +58,19 @@
   services.blueman.enable = true;
 
   sound.enable = true;
+  # sound.mediaKeys.enable = true;
   hardware.pulseaudio.enable = true;
   services.pipewire.enable = false;
+
+  # enable backlight control
+  programs.light.enable = true;
+  services.actkbd = {
+    enable = true;
+    bindings = [
+      { keys = [ 225 ]; events = [ "key" ]; command = "/run/current-system/sw/bin/light -A 10"; }
+      { keys = [ 224 ]; events = [ "key" ]; command = "/run/current-system/sw/bin/light -U 10"; }
+    ];
+  };
 
   # # Enable sound with pipewire.
   # sound.enable = true;
