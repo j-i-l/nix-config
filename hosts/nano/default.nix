@@ -23,10 +23,21 @@
 
   # enable virtualisation
   virtualisation.lxd.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
+    # to change the storage location
+    # daemon.settings = {
+    #   data-root = "/some-place/to-store-the-docker-data";
+    # };
+  };
 
   users.users.${userInfo.username} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "audio" "lxd" "video"]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "audio" "lxd" "video" "docker"];
     hashedPassword = "${userInfo.pwhash}";
   };
 
@@ -57,16 +68,34 @@
   };
   services.blueman.enable = true;
 
-  sound.enable = true;
-  # sound.mediaKeys.enable = true;
-  hardware.pulseaudio.enable = true;
-  services.pipewire.enable = false;
+  sound.enable = false;
+  sound.mediaKeys.enable = false;
+  # hardware.pulseaudio = {
+  #   enable = true;
+  #   package = pkgs.pulseaudioFull;
+  #   extraModules = [ pkgs.pulseaudio-ctl ];
+  # };
+  # services.pipewire.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    wireplumber.enable = true;
+    # If you want to use JACK applications, uncomment this
+    jack.enable = true;
+  };
+
 
   # enable backlight control
   programs.light.enable = true;
   services.actkbd = {
     enable = true;
     bindings = [
+      { keys = [ 113 ]; events = [ "key" ]; command = "/run/current-system/sw/bin/wpctl set-mute @DEFAULT_SINK@ toggle"; }
+      { keys = [ 114 ]; events = [ "key" ]; command = "/run/current-system/sw/bin/wpctl set-volume @DEFAULT_SINK@ 5%-"; }
+      { keys = [ 115 ]; events = [ "key" ]; command = "/run/current-system/sw/bin/wpctl set-volume @DEFAULT_SINK@ 5%+"; }
       { keys = [ 225 ]; events = [ "key" ]; command = "/run/current-system/sw/bin/light -A 10"; }
       { keys = [ 224 ]; events = [ "key" ]; command = "/run/current-system/sw/bin/light -U 10"; }
     ];
