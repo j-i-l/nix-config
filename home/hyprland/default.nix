@@ -57,14 +57,18 @@ in {
             "$mod, H, movefocus, l"
             "$mod, J, movefocus, d"
 	    "$mod, K, movefocus, u" 
-            "$mod, S, togglespecialworkspace,"
+            "$mod, S, togglespecialworkspace, special"
+            "$mod, A, togglespecialworkspace, media"
+            "$mod, D, togglespecialworkspace, debug"
 
             # --Move--
             "$mod SHIFT, L, movewindow, r"
             "$mod SHIFT, H, movewindow, l"
             "$mod SHIFT, J, movewindow, d"
 	    "$mod SHIFT, K, movewindow, u" 
-	    "$mod SHIFT, S, movetoworkspace, special"
+	          "$mod SHIFT, S, movetoworkspacesilent, special"
+            "$mod SHIFT, A, movetoworkspacesilent, media"
+            "$mod SHIFT, D, movetoworkspacesilent, debug"
 
             # --Mappings--
             "$mod, SPACE, exec, $browser"
