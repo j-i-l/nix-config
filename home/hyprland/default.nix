@@ -43,6 +43,7 @@ in {
             "$mod, F, fullscreen, 1"     # keep the bar
             "$mod SHIFT, F, fullscreen"  # without bar
 	    "$mod, P, pseudo,"
+            # --Groups--
             "$mod, G, changegroupactive,"
             "$mod SHIFT, G, togglegroup,"
             "$mod CTRL, G, lockactivegroup, toggle"
