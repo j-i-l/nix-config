@@ -43,6 +43,14 @@ in {
             "$mod, F, fullscreen, 1"     # keep the bar
             "$mod SHIFT, F, fullscreen"  # without bar
 	    "$mod, P, pseudo,"
+            "$mod, G, changegroupactive,"
+            "$mod SHIFT, G, togglegroup,"
+            "$mod CTRL, G, lockactivegroup, toggle"
+            "$mod CTRL, L, movewindoworgroup, r"
+            "$mod CTRL, H, movewindoworgroup, l"
+            "$mod CTRL, R, movewindoworgroup, r"
+            "$mod CTRL, J, movewindoworgroup, d"
+            "$mod CTRL, K, movewindoworgroup, u"
 
             # --Focus--
             "$mod, L, movefocus, r"
