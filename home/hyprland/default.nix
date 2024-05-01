@@ -75,9 +75,9 @@ in {
             "$mod SHIFT, H, movewindow, l"
             "$mod SHIFT, J, movewindow, d"
 	    "$mod SHIFT, K, movewindow, u" 
-	          "$mod SHIFT, S, movetoworkspacesilent, special"
-            "$mod SHIFT, A, movetoworkspacesilent, media"
-            "$mod SHIFT, D, movetoworkspacesilent, debug"
+	          "$mod SHIFT, S, movetoworkspacesilent, special:special"
+            "$mod SHIFT, A, movetoworkspacesilent, special:media"
+            "$mod SHIFT, D, movetoworkspacesilent, special:debug"
 
             # --Mappings--
             "$mod, SPACE, exec, $browser"
