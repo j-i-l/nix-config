@@ -40,6 +40,9 @@ in {
           [
             # --Hyprland--
             "$mod SHIFT, Q, killactive,"
+            # --Monitors--
+            "$mod, M, focusmonitor, +1"                           # focus on the next monitor
+            "$mod SHIFT, M, movecurrentworkspacetomonitor, +1"    # move workspace to next monitor
             # --Windows--
             "$mod, F, togglefloating,"     # make a floating window
             "$mod SHIFT, F, centerwindow,"     # center floating window
