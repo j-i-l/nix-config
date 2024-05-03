@@ -36,6 +36,20 @@ in {
           extend_border_grab_area = 15;
           layout = "dwindle";
         };
+        decoration = {
+        };
+        # -- Group styling --
+        group = {
+          "col.border_active" = "rgb(${colors.tealAlpha}) rgb(${colors.greenAlpha}) 45deg";
+          "col.border_inactive" = "rgb(${colors.overlay1Alpha}) rgb(${colors.greenAlpha}) 45deg";
+          "col.border_locked_active" = "rgb(${colors.redAlpha}) rgb(${colors.peachAlpha}) 45deg";
+          "col.border_locked_inactive" = "rgb(${colors.overlay1Alpha}) rgb(${colors.peachAlpha}) 45deg";
+          groupbar = {
+            "gradients" = "false";
+            "col.active" = "rgb(${colors.overlay2Alpha}) rgb(${colors.sapphireAlpha}) 45deg";
+            "col.inactive" = "rgb(${colors.overlay2Alpha}) rgb(${colors.tealAlpha}) 45deg";
+          };
+        };
         bind =
           [
             # --Hyprland--
