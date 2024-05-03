@@ -63,10 +63,10 @@ in {
             "$mod CTRL, F, pin,"           # pin the window
             "$mod, W, fullscreen, 1"       # keep the bar
             "$mod SHIFT, W, fullscreen"    # without bar
-            "$mod ALT, J, resizeactive, 0 10"
-            "$mod ALT, K, resizeactive, 0 -10"
-            "$mod ALT, H, resizeactive, 10 0"
-            "$mod ALT, L, resizeactive, -10 0"
+            "$mod ALT, J, resizeactive, 0 10%"
+            "$mod ALT, K, resizeactive, 0 -10%"
+            "$mod ALT, H, resizeactive, 10% 0"
+            "$mod ALT, L, resizeactive, -105 0"
 	    "$mod, P, pseudo,"
             # --Groups--
             "$mod, G, changegroupactive,"
