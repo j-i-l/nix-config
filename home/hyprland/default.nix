@@ -8,6 +8,7 @@ in {
 
   home.packages = with pkgs; [
     wofi
+    grimblast
   ];
   wayland.windowManager.hyprland = {
     settings = {
@@ -102,7 +103,7 @@ in {
             "$mod, Return, exec, $term"
             # "$mod SHIFT, Return, exec, wofi --show run --xoffset=1670 --yoffset=12 --width=230px --height=984 --style=$HOME/.config/wofi.css --term=footclient --prompt=Run"
             "$mod SHIFT, Return, exec, wofi --show run --style=$HOME/.config/wofi.css --term=footclient --prompt=Run --normal-window"
-            ", Print, exec, grimblast copy area"
+            ", Print, exec, grimblast copysave area"
           ]
           ++ (
             # workspaces
