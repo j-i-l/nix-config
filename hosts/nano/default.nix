@@ -59,6 +59,9 @@
 
   system.stateVersion = "23.11";
 
+  # increase space of /run/users/
+  services.logind.extraConfig = "RuntimeDirectorySize=8G";
+
   hardware.opengl.enable = lib.mkDefault true;
 
   # enable bluetooth
