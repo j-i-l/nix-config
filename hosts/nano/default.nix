@@ -57,7 +57,7 @@
 
   };
 
-  system.stateVersion = "23.11";
+  system.stateVersion = "24.05";
 
   # increase space of /run/users/
   services.logind.extraConfig = "RuntimeDirectorySize=8G";

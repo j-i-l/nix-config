@@ -108,7 +108,7 @@
           pkgs.vimPlugins.vim-gitgutter
         ];
         extraPackages = with pkgs; [
-          nodejs_21
+          # nodejs_21
           ack
 	        silver-searcher
           (python3.withPackages (ps: with ps; [

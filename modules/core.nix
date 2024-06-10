@@ -44,11 +44,10 @@
   # config to make gpg work
   programs.gnupg.agent = {
     enable = true;
-    pinentryFlavor = "curses";
     enableSSHSupport = true;
   };
 
-  system.stateVersion = lib.mkDefault "23.11"; # Did you read the comment?
+  system.stateVersion = lib.mkDefault "24.05"; # Did you read the comment?
 
   #----=[ Fonts ]=----#
   # install some fonts

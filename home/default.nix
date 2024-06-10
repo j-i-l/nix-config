@@ -18,7 +18,7 @@
     # You can update home Manager without changing this value. See
     # the home Manager release notes for a list of state version
     # changes in each release.
-    stateVersion = "23.11";
+    stateVersion = "24.05";
 
     # Packages that should be installed to the user profile.
     packages = with pkgs; [
