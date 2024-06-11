@@ -41,6 +41,7 @@
       xz
       unzip
       p7zip
+      ripgrep
 
       # utils
       jq # A lightweight and flexible command-line JSON processor

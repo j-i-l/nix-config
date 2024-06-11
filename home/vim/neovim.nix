@@ -93,6 +93,12 @@
           hi SpellBad cterm=underline
           " Set style for gVim
           hi SpellBad gui=undercurl
+
+          " Telescope 
+          nnoremap <leader>ff <cmd>Telescope find_files<cr>
+          nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+          nnoremap <leader>fb <cmd>Telescope buffers<cr>
+          nnoremap <leader>fh <cmd>Telescope help_tags<cr>
         '';
         withPython3 = true;
         viAlias = true;
@@ -106,9 +112,12 @@
           pkgs.vimPlugins.fzf-vim
           pkgs.vimPlugins.ack-vim
           pkgs.vimPlugins.vim-gitgutter
+          pkgs.vimPlugins.plenary-nvim
+          pkgs.vimPlugins.telescope-nvim
         ];
         extraPackages = with pkgs; [
-          # nodejs_21
+          nodejs
+          ripgrep-all
           ack
 	        silver-searcher
           (python3.withPackages (ps: with ps; [
