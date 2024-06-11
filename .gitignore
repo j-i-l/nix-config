@@ -1,3 +1,6 @@
+parser-info/
+parser/
+
 userInfo.nix
 deviceInfo.nix
 

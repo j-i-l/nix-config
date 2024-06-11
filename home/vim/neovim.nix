@@ -114,14 +114,45 @@
           pkgs.vimPlugins.ack-vim
           pkgs.vimPlugins.vim-gitgutter
           pkgs.vimPlugins.plenary-nvim
-          pkgs.vimPlugins.telescope-nvim
+          {
+            plugin = nvim-colorizer-lua;
+            type = "lua";
+            config = builtins.readFile(./lua/colorizer.lua);
+          }
+          {
+            plugin = telescope-nvim;
+            type = "lua";
+            config = builtins.readFile(./lua/telescope.lua);
+          }
           pkgs.vimPlugins.nvim-notify
-          pkgs.vimPlugins.nvim-treesitter
+          {
+            plugin = nvim-notify;
+            type = "lua";
+            config = builtins.readFile(./lua/notify.lua);
+          }
+          pkgs.vimPlugins.nvim-treesitter.withAllGrammars
+          {
+            plugin = nvim-treesitter;
+            type = "lua";
+            config = builtins.readFile(./lua/treesitter.lua);
+          }
           pkgs.vimPlugins.nui-nvim
-          pkgs.vimPlugins.noice-nvim
+          {
+            plugin = noice-nvim;
+            type = "lua";
+            config = builtins.readFile(./lua/noice.lua);
+          }
+          {
+            plugin = lualine-nvim;
+            type = "lua";
+            config = builtins.readFile(./lua/noiceLualine.lua);
+          }
+          pkgs.vimPlugins.nvim-web-devicons
         ];
         extraPackages = with pkgs; [
+          gcc
           nodejs
+          fd
           ripgrep-all
           ack
 	        silver-searcher
