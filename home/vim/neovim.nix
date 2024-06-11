@@ -115,6 +115,10 @@
           pkgs.vimPlugins.vim-gitgutter
           pkgs.vimPlugins.plenary-nvim
           pkgs.vimPlugins.telescope-nvim
+          pkgs.vimPlugins.nvim-notify
+          pkgs.vimPlugins.nvim-treesitter
+          pkgs.vimPlugins.nui-nvim
+          pkgs.vimPlugins.noice-nvim
         ];
         extraPackages = with pkgs; [
           nodejs
