@@ -23,7 +23,8 @@
     home.file."${config.xdg.configHome}/nvim/spell/fr.latin1.sug".source = nvim-spell-fr-latin1-suggestions;
     programs = {
       neovim = {
-        enable =true;
+
+        enable = true;
         extraConfig = ''
         	syntax on
           filetype on
