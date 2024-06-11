@@ -21,7 +21,7 @@
         url = "github:nix-community/nixvim/nixos-24.05";
         inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     # # note: target a specific tag like this:
     # hyprland.url = "github:hyprwm/Hyprland";
   };
@@ -35,6 +35,9 @@
       // {
         inherit userInfo deviceInfo;
       };
+    overlays = [
+      inputs.neovim-nightly-overlay.overlays.default
+    ];
   in {
     nixosConfigurations = {
       nano = nixpkgs.lib.nixosSystem {
@@ -44,6 +47,7 @@
           # nixvim.nixosModules.nixvim
           home-manager.nixosModules.home-manager
           {
+            nixpkgs.overlays = overlays;
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = specialArgs;
