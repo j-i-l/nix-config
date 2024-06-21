@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, config, userInfo, ... }:
   let
     nvim-spell-fr-utf8-dictionary = builtins.fetchurl {
       url = "http://ftp.vim.org/vim/runtime/spell/fr.utf-8.spl";
@@ -21,6 +21,10 @@
     home.file."${config.xdg.configHome}/nvim/spell/fr.utf-8.sug".source = nvim-spell-fr-utf8-suggestions;
     home.file."${config.xdg.configHome}/nvim/spell/fr.latin1.spl".source = nvim-spell-fr-latin1-dictionary;
     home.file."${config.xdg.configHome}/nvim/spell/fr.latin1.sug".source = nvim-spell-fr-latin1-suggestions;
+    home.file."${config.xdg.configHome}/nvim/lua" = {
+      recursive = true;
+      source = ./lua;
+    };
     programs = {
       neovim = {
 
@@ -104,6 +108,7 @@
         withPython3 = true;
         viAlias = true;
         vimAlias = true;
+        # TODO; checkout https://github.com/Kidsan/nixos-config/tree/main/home/programs/neovim/nvim
         plugins = with pkgs.vimPlugins; [
           coc-nvim
           coc-pyright
@@ -120,36 +125,28 @@
             config = builtins.readFile(./lua/colorizer.lua);
           }
           {
-            plugin = telescope-nvim;
-            type = "lua";
-            config = builtins.readFile(./lua/telescope.lua);
-          }
-          pkgs.vimPlugins.nvim-notify
-          {
-            plugin = nvim-notify;
-            type = "lua";
-            config = builtins.readFile(./lua/notify.lua);
-          }
-          pkgs.vimPlugins.nvim-treesitter.withAllGrammars
-          {
-            plugin = nvim-treesitter;
-            type = "lua";
-            config = builtins.readFile(./lua/treesitter.lua);
-          }
-          pkgs.vimPlugins.nui-nvim
-          {
-            plugin = noice-nvim;
-            type = "lua";
-            config = builtins.readFile(./lua/noice.lua);
-          }
-          {
             plugin = lualine-nvim;
             type = "lua";
-            config = builtins.readFile(./lua/noiceLualine.lua);
+            config = builtins.readFile(./lua/lualine.lua);
           }
+          {
+            plugin = lazy-nvim;
+            type = "lua";
+            config = builtins.readFile(./lua/lazy-nvim.lua);
+          }
+          # pkgs.vimPlugins.neorg
+          # pkgs.vimPlugins.neorg-telescope
+          # pkgs.vimPlugins.python-mode
+          pkgs.vimPlugins.telescope-nvim
+          pkgs.vimPlugins.nvim-notify
+          pkgs.vimPlugins.nvim-treesitter.withAllGrammars
+          pkgs.vimPlugins.nvim-treesitter
+          pkgs.vimPlugins.nui-nvim
+          pkgs.vimPlugins.noice-nvim
           pkgs.vimPlugins.nvim-web-devicons
         ];
         extraPackages = with pkgs; [
+          lua
           gcc
           nodejs
           fd
@@ -157,13 +154,17 @@
           ack
 	        silver-searcher
           (python3.withPackages (ps: with ps; [
-            black
-            flake8
+            # black
+            # flake8
           ]))
         ];
         extraPython3Packages = (ps: with ps; [
-          jedi
+          setuptools
+          # rope
+          # pylama
+          # jedi
         ]);
       };
     };
+
 }
