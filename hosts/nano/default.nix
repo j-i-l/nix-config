@@ -1,8 +1,11 @@
-{ config, inputs, lib, pkgs, userInfo, deviceInfo, ... }: {
+{ config, inputs, lib, pkgs, userInfo, deviceInfo, ... }: 
+{
   imports = [
-
-    ../../modules/core.nix
     ./hardware-configuration.nix
+    # here we import the modules we want to use
+    ../../modules/core.nix
+    ../../modules/kMeet.nix
+    # ../../modules/obsidian.nix
 
   ];
 
