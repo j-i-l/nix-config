@@ -136,7 +136,6 @@
           }
           # pkgs.vimPlugins.neorg
           # pkgs.vimPlugins.neorg-telescope
-          # pkgs.vimPlugins.python-mode
           pkgs.vimPlugins.telescope-nvim
           pkgs.vimPlugins.nvim-notify
           pkgs.vimPlugins.nvim-treesitter.withAllGrammars
