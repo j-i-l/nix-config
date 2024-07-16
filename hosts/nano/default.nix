@@ -25,6 +25,9 @@
   };
 
   # enable virtualisation
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
+  
   virtualisation.lxd.enable = true;
   virtualisation.docker = {
     enable = true;
@@ -40,7 +43,7 @@
 
   users.users.${userInfo.username} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "audio" "lxd" "video" "docker"];
+    extraGroups = [ "wheel" "audio" "lxd" "video" "docker" "libvirtd"];
     hashedPassword = "${userInfo.pwhash}";
   };
 
