@@ -13,6 +13,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
         url = "github:nix-community/home-manager/release-24.05";
         inputs.nixpkgs.follows = "nixpkgs";
@@ -26,7 +27,7 @@
     # hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, nixvim, ... }: 
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, nixvim, ... }: 
   let
     userInfo = import ./userInfo.nix; 
     deviceInfo = import ./deviceInfo.nix; 
