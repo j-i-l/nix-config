@@ -5,6 +5,7 @@
     # here we import the modules we want to use
     ../../modules/core.nix
     ../../modules/kMeet.nix
+    ../../modules/nix-ld.nix
     # ../../modules/obsidian.nix
 
   ];
