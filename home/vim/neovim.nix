@@ -152,6 +152,7 @@
           ripgrep-all
           ack
 	        silver-searcher
+          pyright
           (python3.withPackages (ps: with ps; [
             # black
             # flake8
