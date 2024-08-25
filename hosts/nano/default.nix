@@ -6,6 +6,7 @@
     ../../modules/core.nix
     ../../modules/kMeet.nix
     ../../modules/nix-ld.nix
+    ../../modules/pulse-vpn.nix
     # ../../modules/obsidian.nix
 
   ];
