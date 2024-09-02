@@ -152,6 +152,8 @@
           ripgrep-all
           ack
 	        silver-searcher
+          ruff
+          ruff-lsp
           pyright
           (python3.withPackages (ps: with ps; [
             # black
