@@ -32,7 +32,8 @@
       # chat
       telegram-desktop
       # note taking and organisation
-      anytype
+      # anytype
+      # joplin-desktop
 
       # here are some handy command line tools
 
