@@ -24,7 +24,7 @@ in {
         "$files" = "thunar";
 
         input = {
-          kb_layout = "us,de";
+          kb_layout = "us,ch";
           kb_options = "caps:swapescape,grp:alt_space_toggle";
         };
         general = {
