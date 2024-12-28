@@ -256,8 +256,11 @@ in
       }
       #workspaces button.hidden {
       }
-      #workspaces button.focused,
+      #workspaces button.focused {
+        background-color: #007acc; 
+      }
       #workspaces button.active {
+        background-color: blue; 
       }
 
       #clock {
