@@ -18,7 +18,7 @@
     # You can update home Manager without changing this value. See
     # the home Manager release notes for a list of state version
     # changes in each release.
-    stateVersion = "24.05";
+    stateVersion = "24.11";
 
     # Packages that should be installed to the user profile.
     packages = with pkgs; [
@@ -31,9 +31,12 @@
       pkgs.dconf
       # chat
       telegram-desktop
+      signal-desktop
       # note taking and organisation
       # anytype
       # joplin-desktop
+
+      gimp
 
       # here are some handy command line tools
 
@@ -53,6 +56,7 @@
       # eza # A modern replacement for ‘ls’
 
       # networking tools
+      dig
       nmap # A utility for network discovery and security auditing
       # mtr # A network diagnostic tool
       # iperf3
@@ -94,6 +98,9 @@
 
       # enable wl-copy and wl-paste
       wl-clipboard
+
+      # micropython IDE
+      thonny
     ];
   };
 
