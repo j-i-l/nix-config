@@ -80,7 +80,7 @@
 
   };
 
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11";
 
   # increase space of /run/users/
   services.logind.extraConfig = "RuntimeDirectorySize=8G";
@@ -94,8 +94,8 @@
   };
   services.blueman.enable = true;
 
-  sound.enable = false;
-  sound.mediaKeys.enable = false;
+  # sound.enable = false;
+  # sound.mediaKeys.enable = false;
   # hardware.pulseaudio = {
   #   enable = true;
   #   package = pkgs.pulseaudioFull;
