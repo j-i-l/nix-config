@@ -32,12 +32,12 @@
 
   outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, nixvim, ... }: 
   let
-    userInfo = import ./userInfo.nix; 
-    deviceInfo = import ./deviceInfo.nix; 
+    deviceInfo = import ./Info/deviceInfo.nix;
+    userInfo = import ./Info/userInfo.nix;
     specialArgs =
       inputs
       // {
-        inherit userInfo deviceInfo;
+        inherit deviceInfo userInfo inputs;
       };
     overlays = [
       inputs.neovim-nightly-overlay.overlays.default
