@@ -37,6 +37,14 @@
       # joplin-desktop
 
       gimp
+      ffmpeg
+      swayimg
+      ueberzugpp
+      mpv
+      vlc
+
+      # pdfs
+      evince
 
       # here are some handy command line tools
 
@@ -65,6 +73,11 @@
       # aria2 # A lightweight multi-protocol & multi-source command-line download utility
       # socat # replacement of openbsd-netcat
       # ipcalc  # it is a calculator for the IPv4/v6 addresses
+
+
+      # remote connection
+      tigervnc
+      remmina
 
       # misc
       which
@@ -118,6 +131,27 @@
   # home.file.".xxx".text = ''
   #     xxx
   # '';
+
+  # Ranger configuration
+  home.file.".config/ranger/rc.conf".text = ''
+    # Enable image and video previews
+    set preview_images true
+    set preview_images_method ueberzug
+  '';
+
+  # Create the scope.sh file for custom previews
+  home.file.".config/ranger/scope.sh".text = ''
+    #!/bin/bash
+
+    # Preview videos
+    if [[ "$1" =~ \.(mp4|mkv|webm|avi)$ ]]; then
+        mpv --no-border --loop --quiet -- "$1" &
+        exit 0
+    fi
+
+    exit 1
+  '';
+  home.file.".config/ranger/scope.sh".executable = true;
 
   # set cursor size and dpi for 4k monitor
   xresources.properties = {
