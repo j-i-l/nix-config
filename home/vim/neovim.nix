@@ -104,6 +104,10 @@
           nnoremap <leader>fg <cmd>Telescope live_grep<cr>
           nnoremap <leader>fb <cmd>Telescope buffers<cr>
           nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+          " Python stuff
+          autocmd FileType python setlocal colorcolumn=80
+          highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
         '';
         withPython3 = true;
         viAlias = true;
