@@ -30,11 +30,13 @@
 
   # globally installed packages
   environment.systemPackages = with pkgs; [
+    qt6.qtwayland  # for qt applications
     ncdu # to check directory sizes
     vim
     wget
     mkpasswd
     pass
+    sshuttle
     pinentry-curses
     gnupg
     git
