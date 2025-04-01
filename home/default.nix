@@ -26,7 +26,8 @@
       ranger
       xfce.thunar
       # browsers
-      firefox-wayland 
+      (pkgs.wrapFirefox (pkgs.firefox-unwrapped.override { pipewireSupport = true;}) {})
+      #firefox-wayland 
       # for firefox we need the icons from gtk and for this we need dconf
       pkgs.dconf
       # chat
