@@ -114,8 +114,8 @@
         vimAlias = true;
         # TODO; checkout https://github.com/Kidsan/nixos-config/tree/main/home/programs/neovim/nvim
         plugins = with pkgs.vimPlugins; [
-          coc-nvim
-          coc-pyright
+          # coc-nvim
+          # coc-pyright
           pkgs.vimPlugins.nvim-tree-lua
           pkgs.vimPlugins.vim-startify
           pkgs.vimPlugins.fzfWrapper
@@ -142,8 +142,8 @@
           # pkgs.vimPlugins.neorg-telescope
           pkgs.vimPlugins.telescope-nvim
           pkgs.vimPlugins.nvim-notify
-          pkgs.vimPlugins.nvim-treesitter.withAllGrammars
-          pkgs.vimPlugins.nvim-treesitter
+          # pkgs.vimPlugins.nvim-treesitter.withAllGrammars
+          # pkgs.vimPlugins.nvim-treesitter
           pkgs.vimPlugins.nui-nvim
           pkgs.vimPlugins.noice-nvim
           pkgs.vimPlugins.nvim-web-devicons
@@ -157,8 +157,8 @@
           ack
 	        silver-searcher
           ruff
-          ruff-lsp
-          pyright
+          # ruff-lsp
+          # pyright
           (python3.withPackages (ps: with ps; [
             # black
             # flake8
