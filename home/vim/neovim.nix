@@ -81,6 +81,10 @@
 
           nnoremap gp `[v`]
           
+          " netrw setting
+          let g:netrw_fastbrowse= 2
+          let g:netrw_liststyle=3
+
           " File finder
           nmap <Leader>t :FZF<CR>
           nmap <Leader>h :Ag<CR>
