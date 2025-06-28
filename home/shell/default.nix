@@ -9,7 +9,7 @@
     # set default applications
     EDITOR = "vim";
     BROWSER = "firefox";
-    TERMINAL = "alacritty";
+    TERMINAL = "kitty";
 
     # enable scrolling in git diff
     DELTA_PAGER = "less -R";
@@ -21,6 +21,18 @@
     k = "kubectl";
   };
   # --Terminal Emulator --
+  programs.kitty = {
+    enable = true;
+    settings = {
+      cursor_trail = 3;
+      font_family = "Hasklug Nerd Font";
+      bold_font = "auto";
+      bold_italic_font = "auto";
+      scrollback_lines = -1;
+      shell_integration = "enabled";
+      shell = "bash";
+    };
+  };
   # alacritty - a cross-platform, GPU-accelerated terminal emulator
   programs.alacritty = {
     enable = true;

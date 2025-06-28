@@ -18,7 +18,7 @@ in {
         "$mod" = "SUPER";
 
         # --Mappings--
-        "$term" = "alacritty";
+        "$term" = "kitty";
         "$browser" = "firefox";
         "$browser-private" = "firefox --private-window";
         "$files" = "thunar";
