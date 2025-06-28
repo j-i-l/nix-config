@@ -23,6 +23,7 @@
   # --Terminal Emulator --
   programs.kitty = {
     enable = true;
+    shellIntegration.enableBashIntegration = true;
     settings = {
       cursor_trail = 3;
       font_family = "Hasklug Nerd Font";
