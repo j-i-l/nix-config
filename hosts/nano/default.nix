@@ -4,7 +4,6 @@
     ./hardware-configuration.nix
     # here we import the modules we want to use
     ../../modules/core.nix
-    ../../modules/kMeet.nix
     ../../modules/nix-ld.nix
     ../../modules/pulse-vpn.nix
     # ../../modules/obsidian.nix
@@ -50,7 +49,8 @@
 
   programs.virt-manager.enable = true;
   
-  virtualisation.lxd.enable = true;
+  # TODO: temporal workaround: see https://github.com/NixOS/nixpkgs/issues/422385
+  virtualisation.lxd.enable = false;
   virtualisation.docker = {
     enable = true;
     rootless = {
@@ -85,10 +85,19 @@
 
   };
 
-  system.stateVersion = "24.11";
+  system.stateVersion = "25.05";
 
   # increase space of /run/users/
   services.logind.extraConfig = "RuntimeDirectorySize=8G";
+
+  # tailscale
+  services.tailscale.enable = true;
+  # TODO: This should be tested, not sure if needed
+  networking.firewall = {
+    checkReversePath = "loose";
+    trustedInterfaces = [ "tailscale0" ];
+    allowedUDPPorts = [ config.services.tailscale.port ];
+  };
 
   # file syncing
   services.syncthing = {

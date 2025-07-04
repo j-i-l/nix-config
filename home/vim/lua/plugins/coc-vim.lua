@@ -39,6 +39,14 @@ return {
       python = {
         command = "pyright",
         args = {},
+        settings = {
+          python = {
+            analysis = {
+              -- does not work:
+              typeCheckingMode = "off", -- Disable type checking to avoid inline hints
+            },
+          },
+        },
       },
       javascript = {
         command = "tsserver",

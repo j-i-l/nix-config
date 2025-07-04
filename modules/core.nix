@@ -2,7 +2,26 @@
 
 {
   # globally enable flakes
-  nix.settings.experimental-features = ["nix-command" "flakes" ];
+  nix = {
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 30d";
+    };
+    settings = {
+      # Optimize storage
+      # You can also manually optimize the store via:
+      #    nix-store --optimise
+      # Refer to the following link for more details:
+      # https://nixos.org/manual/nix/stable/command-ref/conf-file.html#conf-auto-optimise-store
+      auto-optimise-store = true;
+      experimental-features = [
+        "flakes"
+        "nix-command"
+      ];
+      download-buffer-size = 1000000000; # 1 GB 
+    };
+  };
   
   # globally as default allow unfree packages
   # nixpkgs.config.allowUnfree = lib.mkDefault true;
@@ -13,20 +32,6 @@
   # Limit the number of generations to keep
   boot.loader.systemd-boot.configurationLimit = lib.mkDefault 10;
   # boot.loader.grub.configurationLimit = 10;
-
-  # Perform garbage collection weekly to maintain low disk usage
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 1w";
-  };
-
-  # Optimize storage
-  # You can also manually optimize the store via:
-  #    nix-store --optimise
-  # Refer to the following link for more details:
-  # https://nixos.org/manual/nix/stable/command-ref/conf-file.html#conf-auto-optimise-store
-  nix.settings.auto-optimise-store = true;
 
   # globally installed packages
   environment.systemPackages = with pkgs; [
@@ -57,7 +62,7 @@
     enableSSHSupport = true;
   };
 
-  system.stateVersion = lib.mkDefault "24.11"; # Did you read the comment?
+  system.stateVersion = lib.mkDefault "25.05"; # Did you read the comment?
 
   #----=[ Fonts ]=----#
   # install some fonts
@@ -65,16 +70,13 @@
     enableDefaultPackages = true;
     packages = with pkgs; [
       ubuntu_font_family
-      nerdfonts
+      font-awesome
+      fira-mono
+      hasklig
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-emoji
     ];
-    fontconfig = {
-      enable = true;
-      defaultFonts = {
-        serif = ["Hasklig" "Ubuntu"];
-        sansSerif = ["FiraMono" "Ubuntu"];
-        monospace = ["Ubuntu"];
-      };
-    };
   };
 
 }

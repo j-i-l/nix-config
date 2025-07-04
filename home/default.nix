@@ -18,7 +18,7 @@
     # You can update home Manager without changing this value. See
     # the home Manager release notes for a list of state version
     # changes in each release.
-    stateVersion = "24.11";
+    stateVersion = "25.05";
 
     # Packages that should be installed to the user profile.
     packages = with pkgs; [
@@ -26,8 +26,8 @@
       ranger
       xfce.thunar
       # browsers
-      (pkgs.wrapFirefox (pkgs.firefox-unwrapped.override { pipewireSupport = true;}) {})
-      #firefox-wayland 
+      # (pkgs.wrapFirefox (pkgs.firefox-unwrapped.override { pipewireSupport = true;}) {})
+      firefox-wayland 
       # for firefox we need the icons from gtk and for this we need dconf
       pkgs.dconf
       # chat
