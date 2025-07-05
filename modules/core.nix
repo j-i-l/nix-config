@@ -68,15 +68,12 @@
   # install some fonts
   fonts = {
     enableDefaultPackages = true;
-    packages = with pkgs; [
-      ubuntu_font_family
-      font-awesome
-      fira-mono
-      hasklig
-      noto-fonts
-      noto-fonts-cjk-sans
-      noto-fonts-emoji
-    ];
-  };
-
+    packages = builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+    # packages = with pkgs; [
+    #   material-icons
+    #   ubuntu_font_family
+    #   font-awesome
+    #   hasklig
+    # ];
+    };
 }
