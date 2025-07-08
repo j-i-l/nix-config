@@ -17,21 +17,22 @@
     MANPAGER = "sh -c 'col -bx | bat -l man -p'";
   };
 
-  home.shellAliases = {
-    k = "kubectl";
-  };
   # --Terminal Emulator --
   programs.kitty = {
     enable = true;
-    shellIntegration.enableBashIntegration = true;
+    shellIntegration = {
+      enableBashIntegration = true;
+      mode = "enable";
+    };
+    enableGitIntegration = true;
     settings = {
       cursor_trail = 3;
+      dynamic_background_opacity = true;
+      enable_audio_bell = false;
       font_family = "Hasklug Nerd Font";
       bold_font = "auto";
       bold_italic_font = "auto";
       scrollback_lines = -1;
-      shell_integration = "enabled";
-      shell = "bash";
     };
   };
   # alacritty - a cross-platform, GPU-accelerated terminal emulator

@@ -49,9 +49,9 @@
   # enable printer
   services.printing.enable = true;
   services.avahi = {
-  enable = true;
-  nssmdns4 = true;
-  openFirewall = true;
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
   };
 
   # using udisksctl to mount devices
