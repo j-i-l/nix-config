@@ -91,7 +91,10 @@
   services.logind.extraConfig = "RuntimeDirectorySize=8G";
 
   # tailscale
-  services.tailscale.enable = true;
+  services.tailscale = {
+    enable = true;
+    useRoutingFeatures = "client";
+  };
   # TODO: This should be tested, not sure if needed
   networking.firewall = {
     checkReversePath = "loose";
