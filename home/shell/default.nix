@@ -18,6 +18,10 @@
   };
 
   # --Terminal Emulator --
+
+  home.shellAliases = {
+    ss = "kitten ssh";
+  };
   programs.kitty = {
     enable = true;
     shellIntegration = {
