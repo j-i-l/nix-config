@@ -3,6 +3,7 @@ let
   pulse-cookie = pkgs.python3.pkgs.buildPythonApplication rec {
     pname = "pulse-cookie";
     version = "1.0";
+    pyproject = true;
 
     src = pkgs.fetchPypi {
       inherit pname version;
@@ -14,6 +15,9 @@ let
       pkgs.python3.pkgs.pyqt6-webengine
       pkgs.python3.pkgs.setuptools
       pkgs.python3.pkgs.setuptools_scm
+    ];
+    build-system = [
+      pkgs.python3.pkgs.setuptools
     ];
 
     preBuild = ''
