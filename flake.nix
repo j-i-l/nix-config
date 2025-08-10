@@ -12,16 +12,17 @@
   };
 
   inputs = {
+    j-i-l-nixvim.url = "git+https://codeberg.org/j-i-l/nixvim-config";
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-25_05.url = "github:nixos/nixpkgs/nixos-25.05";
+    # nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
-        url = "github:nix-community/home-manager/release-25.05";
+        url = "github:nix-community/home-manager/master";
         inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim = {
-        url = "github:nix-community/nixvim/nixos-25.05";
+        url = "github:nix-community/nixvim/main";
         # url = "github:nix-community/nixvim/nixos-unstable";
         inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -30,14 +31,15 @@
     # hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, nixvim, ... }: 
+  outputs = inputs@{ self, nixpkgs, nixpkgs-25_05, home-manager, nixvim, ... }: 
   let
+    system = "x86_64-linux";
     deviceInfo = import ./Info/deviceInfo.nix;
     userInfo = import ./Info/userInfo.nix;
     specialArgs =
       inputs
       // {
-        inherit deviceInfo userInfo inputs;
+        inherit deviceInfo userInfo inputs system;
       };
     overlays = [
        # inputs.neovim-nightly-overlay.overlays.default
@@ -46,7 +48,7 @@
     nixosConfigurations = {
       nano = nixpkgs.lib.nixosSystem {
         inherit specialArgs;
-        system = "x86_64-linux";
+        system = "${system}";
         modules = [
           # nixvim.nixosModules.nixvim
           home-manager.nixosModules.home-manager

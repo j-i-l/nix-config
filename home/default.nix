@@ -18,7 +18,7 @@
     # You can update home Manager without changing this value. See
     # the home Manager release notes for a list of state version
     # changes in each release.
-    stateVersion = "25.05";
+    stateVersion = "25.11";
 
     # Packages that should be installed to the user profile.
     packages = with pkgs; [
@@ -174,6 +174,11 @@
     userName = "${userInfo.fullname}";
     userEmail = "${userInfo.email}";
     signing.key = "${userInfo.gpgkey}";
+    extraConfig = {
+      init = {
+        defaultBranch = "main";
+      };
+    };
   };
 
   # # starship - an customizable prompt for any shell
