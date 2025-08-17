@@ -31,7 +31,7 @@
       # for firefox we need the icons from gtk and for this we need dconf
       pkgs.dconf
       # chat
-      telegram-desktop
+      kotatogram-desktop
       signal-desktop
       # note taking and organisation
       # anytype
