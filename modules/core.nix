@@ -45,6 +45,8 @@
     pinentry-curses
     gnupg
     git
+    openh264  # [de|en]coding of H.264
+    moonlight-qt # low-latency streaming
   ];
   # enable printer
   services.printing.enable = true;
