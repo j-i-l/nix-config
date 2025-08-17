@@ -1,4 +1,4 @@
-{ pkgs, lib, config, userInfo, ... }:
+{ inputs, pkgs, lib, config, userInfo, system, ... }:
   let
     nvim-spell-fr-utf8-dictionary = builtins.fetchurl {
       url = "http://ftp.vim.org/vim/runtime/spell/fr.utf-8.spl";
@@ -25,6 +25,7 @@
       recursive = true;
       source = ./lua;
     };
+    home.packages = [ inputs.j-i-l-nixvim.packages.${system}.default ];
     programs = {
       neovim = {
 
