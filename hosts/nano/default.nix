@@ -28,29 +28,30 @@
   # enable virtualisation
   virtualisation.libvirtd = {
     enable = true;
-    qemu = {
-      package = pkgs.qemu_kvm;
-      runAsRoot = true;
-      swtpm.enable = true;
-      ovmf = {
-        enable = true;
-        packages = [(pkgs.OVMF.override {
-          secureBoot = true;
-          tpmSupport = true;
-        }).fd];
-      };
-    };
+    # qemu = {
+    #   package = pkgs.qemu_kvm;
+    #   runAsRoot = true;
+    #   swtpm.enable = true;
+    #   ovmf = {
+    #     enable = true;
+    #     packages = [(pkgs.OVMF.override {
+    #       secureBoot = true;
+    #       tpmSupport = true;
+    #     }).fd];
+    #   };
+    # };
   };
 
   programs.hyprland = {
       enable = true;
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+      xwayland.enable = true;
     };
+
 
   programs.virt-manager.enable = true;
   
   # TODO: temporal workaround: see https://github.com/NixOS/nixpkgs/issues/422385
-  virtualisation.lxd.enable = false;
   virtualisation.docker = {
     enable = true;
     rootless = {
@@ -65,7 +66,7 @@
 
   users.users.${userInfo.username} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "audio" "lxd" "video" "docker" "libvirtd"];
+    extraGroups = [ "wheel" "audio" "lxd" "video" "docker" "libvirtd" "disk"];
     hashedPassword = "${userInfo.pwhash}";
   };
 
@@ -82,13 +83,11 @@
         preLVM = true;
       };
     };
+    binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   };
 
   system.stateVersion = "25.11";
-
-  # increase space of /run/users/
-  services.logind.extraConfig = "RuntimeDirectorySize=8G";
 
   # tailscale
   services.tailscale = {
@@ -156,6 +155,7 @@
   #   extraModules = [ pkgs.pulseaudio-ctl ];
   # };
   # services.pipewire.enable = false;
+  security.polkit.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -187,7 +187,6 @@
   # services.power-profiles-daemon = {
   #   enable = true;
   # };
-  # security.polkit.enable = true;
 
   # rtkit is optional but recommended
   # hardware.pulseaudio.enable = false;
