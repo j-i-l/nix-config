@@ -14,7 +14,7 @@ let
       pkgs.python3.pkgs.pyqt6
       pkgs.python3.pkgs.pyqt6-webengine
       pkgs.python3.pkgs.setuptools
-      pkgs.python3.pkgs.setuptools_scm
+      pkgs.python3.pkgs.setuptools-scm
     ];
     build-system = [
       pkgs.python3.pkgs.setuptools
