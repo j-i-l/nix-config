@@ -7,9 +7,16 @@ in {
   ];
 
   home.packages = with pkgs; [
-    wofi
+    wofi  # either / or
+    rofi  # either / or
     grimblast
+    dunst # notification daemon
+    libnotify
   ];
+
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = with pkgs; [xdg-desktop-portal-gtk ];
+
   wayland.windowManager.hyprland = {
     settings = {
         # --Monitors--
@@ -102,8 +109,11 @@ in {
             "$mod SHIFT, SPACE, exec, $browser-private"
             "$mod, Return, exec, $term"
             # "$mod SHIFT, Return, exec, wofi --show run --xoffset=1670 --yoffset=12 --width=230px --height=984 --style=$HOME/.config/wofi.css --term=footclient --prompt=Run"
+            "$mod SHIFT, R, exec, rofi -show drun -show-icons"
             "$mod SHIFT, Return, exec, wofi --show run --style=$HOME/.config/wofi.css --term=footclient --prompt=Run --normal-window"
+            # - PrintScreen -
             ", Print, exec, grimblast copysave area"
+            "$mod SHIFT, P, exec, grimblast copysave area"
           ]
           ++ (
             # workspaces
