@@ -24,7 +24,7 @@
   };
   
   # globally as default allow unfree packages
-  # nixpkgs.config.allowUnfree = lib.mkDefault true;
+  nixpkgs.config.allowUnfree = lib.mkDefault true;
 
   hardware.enableAllFirmware = lib.mkDefault true;
 
@@ -47,6 +47,9 @@
     git
     openh264  # [de|en]coding of H.264
     moonlight-qt # low-latency streaming
+    cargo
+    rustdesk  # remote control client
+    swww # background images
   ];
   # enable printer
   services.printing.enable = true;
