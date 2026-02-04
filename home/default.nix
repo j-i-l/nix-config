@@ -27,7 +27,7 @@
       xfce.thunar
       # browsers
       # (pkgs.wrapFirefox (pkgs.firefox-unwrapped.override { pipewireSupport = true;}) {})
-      firefox-wayland 
+      firefox
       # for firefox we need the icons from gtk and for this we need dconf
       pkgs.dconf
       # chat
@@ -115,6 +115,16 @@
 
       # micropython IDE
       thonny
+      
+      # latex stuff
+      texliveSmall
+      pandoc
+
+      # design
+      inkscape
+
+      # raspi imager
+      rpi-imager
     ];
   };
 
@@ -157,7 +167,7 @@
   # set cursor size and dpi for 4k monitor
   xresources.properties = {
     "Xcursor.size" = 16;
-    "Xft.dpi" = 172;
+    "Xft.dpi" = 96;
   };
   
 
@@ -171,12 +181,14 @@
   # basic configuration of git
   programs.git = {
     enable = true;
-    userName = "${userInfo.fullname}";
-    userEmail = "${userInfo.email}";
     signing.key = "${userInfo.gpgkey}";
-    extraConfig = {
+    settings = {
       init = {
         defaultBranch = "main";
+      };
+      user = {
+        name = "${userInfo.fullname}";
+        email = "${userInfo.email}";
       };
     };
   };

@@ -14,11 +14,11 @@
   inputs = {
     j-i-l-nixvim.url = "git+https://codeberg.org/j-i-l/nixvim-config";
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-25_05.url = "github:nixos/nixpkgs/nixos-25.05";
     # nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
-        url = "github:nix-community/home-manager/master";
+        url = "github:nix-community/home-manager/release-25.11";
         inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim = {
@@ -59,7 +59,7 @@
             home-manager.extraSpecialArgs = specialArgs;
             home-manager.users.${userInfo.username}.imports = [
               ./home
-              inputs.nixvim.homeManagerModules.nixvim
+              inputs.nixvim.homeModules.nixvim
             ];
             # home-manager.users.${userInfo.username} = import ./home;
           }
