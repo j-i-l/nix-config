@@ -795,6 +795,18 @@
         "type": "github"
       }
     },
+    "nvim": {
+      "flake": false,
+      "locked": {
+        "path": "home/config/nvim",
+        "type": "path"
+      },
+      "original": {
+        "path": "home/config/nvim",
+        "type": "path"
+      },
+      "parent": []
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -826,7 +838,8 @@
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_6",
         "nixpkgs-25_05": "nixpkgs-25_05",
-        "nixvim": "nixvim_2"
+        "nixvim": "nixvim_2",
+        "nvim": "nvim"
       }
     },
     "systems": {

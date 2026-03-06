@@ -29,6 +29,13 @@
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     # # note: target a specific tag like this:
     # hyprland.url = "github:hyprwm/Hyprland";
+
+    # Aallow config via submodules
+    self.submodules = true;
+    nvim = {
+      url = "path:home/config/nvim";
+      flake = false;
+    };
   };
 
   outputs = inputs@{ self, nixpkgs, nixpkgs-25_05, home-manager, nixvim, ... }: 

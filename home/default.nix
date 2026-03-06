@@ -1,11 +1,24 @@
-{ config, pkgs, lib, userInfo, ... }:
 {
+  config,
+  pkgs,
+  lib,
+  userInfo,
+  input,
+  ...
+}: let
+  dotfiles = "${config.home.homeDirectory}/nix-config/home/config";
+  create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
+  configs = {
+    nvim = "nvim";
+  };
+in {
   imports = [
     ./shell
-    ./vim
     ./hyprland
     ./wofi
   ];
+  # Enable the usage of hyprland
+  wayland.windowManager.hyprland.enable = true;
   home = {
     username = "${userInfo.username}";
     homeDirectory = lib.mkDefault "/home/${userInfo.fullname}";
@@ -22,6 +35,10 @@
 
     # Packages that should be installed to the user profile.
     packages = with pkgs; [
+      # nvim dependencies
+      fd     # needef for snacks-explorer
+      cargo  # needed for mason
+      nodejs # also needed for mason
       # filemanager
       ranger
       xfce.thunar
@@ -128,6 +145,12 @@
     ];
   };
 
+  # we deploy our datfiles via out of store symlinks (> in place editable)
+  xdg.configFile = builtins.mapAttrs (name: subpath: {
+    source = create_symlink "${dotfiles}/${subpath}";
+    recursive = true;
+  }) configs;
+
 
   # fix some icon issues with firefox
   gtk = {
@@ -171,43 +194,56 @@
   };
   
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-  # basic configuration of git
-  programs.git = {
-    enable = true;
-    signing.key = "${userInfo.gpgkey}";
-    settings = {
-      init = {
-        defaultBranch = "main";
-      };
-      user = {
-        name = "${userInfo.fullname}";
-        email = "${userInfo.email}";
+  programs = {
+    # Let home Manager install and manage itself.
+    home-manager.enable = true;
+    # basic configuration of git
+    git = {
+      enable = true;
+      signing.key = "${userInfo.gpgkey}";
+      settings = {
+        init = {
+          defaultBranch = "main";
+        };
+        user = {
+          name = "${userInfo.fullname}";
+          email = "${userInfo.email}";
+        };
       };
     };
+    neovim = {
+      enable = true;
+      withPython3 = true;
+      viAlias = true;
+      vimAlias = true;
+      vimdiffAlias = true;
+      extraPackages = with pkgs; [
+          gcc
+          python3
+          python3Packages.flake8
+          black
+          # Additional build dependencies (gcc, cargo) can be appended here
+        ];
+    };
+
+    # # starship - an customizable prompt for any shell
+    # starship = {
+    #   enable = true;
+    #   # custom settings
+    #   settings = {
+    #     add_newline = false;
+    #     aws.disabled = true;
+    #     gcloud.disabled = true;
+    #     line_break.disabled = true;
+    #   };
+    # };
+    # Some programs need SUID wrappers, can be configured further or are
+    # started in user sessions.
+    # mtr.enable = true;
+    # gnupg.agent = {
+    #   enable = true;
+    #   enableSSHSupport = true;
+    # };
   };
 
-  # # starship - an customizable prompt for any shell
-  # programs.starship = {
-  #   enable = true;
-  #   # custom settings
-  #   settings = {
-  #     add_newline = false;
-  #     aws.disabled = true;
-  #     gcloud.disabled = true;
-  #     line_break.disabled = true;
-  #   };
-  # };
-  # Let home Manager install and manage itself.
-
-  programs.home-manager.enable = true;
-
-  # Enable the usage of hyprland
-  wayland.windowManager.hyprland.enable = true;
 }
