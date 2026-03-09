@@ -35,6 +35,8 @@ in {
 
     # Packages that should be installed to the user profile.
     packages = with pkgs; [
+      # containers
+      apptainer
       # nvim dependencies
       fd     # needef for snacks-explorer
       cargo  # needed for mason
