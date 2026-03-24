@@ -73,6 +73,26 @@
           ./hosts/nano
         ];
       };
+      carbon = nixpkgs.lib.nixosSystem {
+        inherit specialArgs;
+        system = "${system}";
+        modules = [
+          # nixvim.nixosModules.nixvim
+          home-manager.nixosModules.home-manager
+          {
+            nixpkgs.overlays = overlays;
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = specialArgs;
+            home-manager.users.${userInfo.username}.imports = [
+              ./home
+              inputs.nixvim.homeModules.nixvim
+            ];
+            # home-manager.users.${userInfo.username} = import ./home;
+          }
+          ./hosts/carbon
+        ];
+      };
     };
     packages.x86_64-linux.hello = nixpkgs.legacyPackages.x86_64-linux.hello;
     packages.x86_64-linux.default = self.packages.x86_64-linux.hello;

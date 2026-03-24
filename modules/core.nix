@@ -50,6 +50,7 @@
     cargo
     rustdesk  # remote control client
     swww # background images
+    brightnessctl # control screen birghtness
   ];
   # enable printer
   services.printing.enable = true;
