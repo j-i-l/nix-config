@@ -29,6 +29,10 @@
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     # # note: target a specific tag like this:
     # hyprland.url = "github:hyprwm/Hyprland";
+    cont-ai-nerd = {
+      url = "github:j-i-l/cont-AI-nerd";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Aallow config via submodules
     self.submodules = true;
@@ -38,7 +42,7 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-25_05, home-manager, nixvim, ... }: 
+  outputs = inputs@{ self, nixpkgs, nixpkgs-25_05, home-manager, nixvim, cont-ai-nerd, ... }: 
   let
     system = "x86_64-linux";
     deviceInfo = import ./Info/deviceInfo.nix;
@@ -90,6 +94,8 @@
             ];
             # home-manager.users.${userInfo.username} = import ./home;
           }
+          # move this to host
+          cont-ai-nerd.nixosModules.default
           ./hosts/carbon
         ];
       };

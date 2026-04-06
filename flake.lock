@@ -33,6 +33,26 @@
         "type": "github"
       }
     },
+    "cont-ai-nerd": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1775494967,
+        "narHash": "sha256-aYvLrpQP190HBSb0xvAeaBfhzS8o0AySZ9kRa2UYTQM=",
+        "owner": "j-i-l",
+        "repo": "cont-AI-nerd",
+        "rev": "e89ed185dd917c7ba292b5e04078681131401d9f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "j-i-l",
+        "repo": "cont-AI-nerd",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -832,6 +852,7 @@
     },
     "root": {
       "inputs": {
+        "cont-ai-nerd": "cont-ai-nerd",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "j-i-l-nixvim": "j-i-l-nixvim",
