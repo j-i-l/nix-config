@@ -21,7 +21,7 @@ in {
   wayland.windowManager.hyprland.enable = true;
   home = {
     username = "${userInfo.username}";
-    homeDirectory = lib.mkDefault "/home/${userInfo.fullname}";
+    homeDirectory = lib.mkDefault "/home/${userInfo.username}";
 
     # This value determines the home Manager release that your
     # configuration is compatible with. This helps avoid breakage

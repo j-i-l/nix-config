@@ -6,6 +6,7 @@
     ../../modules/core.nix
     ../../modules/nix-ld.nix
     ../../modules/pulse-vpn.nix
+    ../../modules/ai.nix
     # ../../modules/obsidian.nix
 
   ];
